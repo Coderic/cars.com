@@ -1,0 +1,24 @@
+name = "cars-com"
+pages_build_output_dir = "./public"
+compatibility_date = "2026-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "CARS_DB"
+database_name = "cars-com"
+database_id = "19d16729-a92c-446c-b5a7-798b165d8704"
+migrations_dir = "db/migrations"
+
+[[r2_buckets]]
+binding = "CARS_MEDIA"
+bucket_name = "cars-com"
+
+[[env.production.d1_databases]]
+binding = "CARS_DB"
+database_name = "cars-com"
+database_id = "19d16729-a92c-446c-b5a7-798b165d8704"
+migrations_dir = "db/migrations"
+
+[[env.production.r2_buckets]]
+binding = "CARS_MEDIA"
+bucket_name = "cars-com"

@@ -1,0 +1,33 @@
+{
+  "name": "cars-com",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm run web:build && npm run admin:build",
+    "setup:local": "npm run db:migrate:local && npm run media:seed:local",
+    "dev": "npm run setup:local && npm run build && wrangler pages dev public",
+    "deploy": "npm run build && wrangler pages deploy public",
+    "db:migrate:local": "wrangler d1 migrations apply CARS_DB --local",
+    "db:migrate:remote": "wrangler d1 migrations apply CARS_DB --remote",
+    "media:seed:local": "node scripts/seed-media.mjs --local",
+    "media:seed:new": "node scripts/seed-media.mjs --local --new",
+    "media:seed:remote": "node scripts/seed-media.mjs --remote",
+    "web:install": "npm install --prefix web",
+    "web:build": "npm run web:install && npm --prefix web run build",
+    "web:dev": "npm --prefix web run dev",
+    "admin:install": "npm install --prefix admin",
+    "admin:build": "npm run admin:install && npm --prefix admin run build",
+    "admin:dev": "npm --prefix admin run dev",
+    "types": "wrangler types"
+  },
+  "dependencies": {
+    "hono": "^4.9.7",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260724.1",
+    "typescript": "^5.9.2",
+    "wrangler": "^4.26.0"
+  }
+}
